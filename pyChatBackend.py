@@ -19,6 +19,7 @@ class pyChatBackend:
         self.ui.setupUi(self.window)
 
         # Default settings
+        self.window.closeEvent = self.close_event
         self.app.setStyle(config.DEFAULT_STYLE)
         self.ui.serverIP_lineEdit.setText(config.DEFAULT_IP)
         self.ui.port_lineEdit.setText(config.DEFAULT_PORT)
@@ -36,7 +37,7 @@ class pyChatBackend:
             host = self.ui.serverIP_lineEdit.text()
             port = int(self.ui.port_lineEdit.text())
             self.server = PyChatServer(host, port, self.append_to_Log)
-            listener_thread = threading.Thread(target=self.server.start)
+            listener_thread = threading.Thread(target=self.server.start)  # Thread to accept clients
             listener_thread.start()
 
     def shutdown_server(self):
@@ -54,6 +55,9 @@ class pyChatBackend:
         self.window.show()
         self.app.exec_()
 
+    def close_event(self, event):
+        self.shutdown_server()
+        event.accept()
 
 if __name__ == '__main__':
     backend = pyChatBackend()
