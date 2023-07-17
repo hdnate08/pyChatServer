@@ -4,15 +4,16 @@ Nathan Harris
 July 17, 2023
 """
 
-import config  # Defaults module
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from pyChatGUI import Ui_MainWindow
-from pyChatServer import PyChatServer  # server module
+from pyChatServer import PyChatServer
+import config
 import threading
 
 
 class pyChatBackend:
     def __init__(self):
+        # Window setup
         self.app = QApplication([])
         self.window = QMainWindow()
         self.ui = Ui_MainWindow()
@@ -37,7 +38,9 @@ class pyChatBackend:
             host = self.ui.serverIP_lineEdit.text()
             port = int(self.ui.port_lineEdit.text())
             self.server = PyChatServer(host, port, self.append_to_Log)
-            listener_thread = threading.Thread(target=self.server.start)  # Thread to accept clients
+            # listener_thread continuosly monitors the given port for
+            # client connections
+            listener_thread = threading.Thread(target=self.server.start)
             listener_thread.start()
 
     def shutdown_server(self):
@@ -58,6 +61,7 @@ class pyChatBackend:
     def close_event(self, event):
         self.shutdown_server()
         event.accept()
+
 
 if __name__ == '__main__':
     backend = pyChatBackend()
