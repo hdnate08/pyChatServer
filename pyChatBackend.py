@@ -4,9 +4,12 @@ Nathan Harris
 July 17, 2023
 """
 
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from pyChat import Ui_MainWindow
+import threading
+import socket
 import config  # Defaults module
+from PyQt5.QtWidgets import QApplication, QMainWindow
+from pyChatGUI import Ui_MainWindow
+# from pyChatServer import PyChatServer  # server module
 
 
 class pyChatBackend:
@@ -27,13 +30,16 @@ class pyChatBackend:
         self.ui.clearLog_pushButton.clicked.connect(self.clear_log)
 
     def establish_server(self):
-        self.ui.serverActivityLog_textEdit.insertPlainText('Establishing server...\n')
+        self.append_to_Log("Server started")
 
     def shutdown_server(self):
-        self.ui.serverActivityLog_textEdit.insertPlainText('Shutting down server...\n')
+        self.append_to_Log("Server stopped")
 
     def clear_log(self):
         self.ui.serverActivityLog_textEdit.clear()
+
+    def append_to_Log(self, message):
+        self.ui.serverActivityLog_textEdit.append(message)
 
     def run(self):
         self.window.show()  # Show the window
