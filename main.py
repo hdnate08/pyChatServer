@@ -1,14 +1,45 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QTextEdit
-from PyQt5 import uic
-import sys
+"""
+pyChat application using PyQt5
+Nathan Harris
+July 17, 2023
+"""
 
-class UI(QMainWindow):
+from PyQt5.QtWidgets import QApplication, QMainWindow
+from pyChat import Ui_MainWindow
+import config  # Defaults module
+
+
+class pyChatBackend:
     def __init__(self):
-        super(UI, self).__init__()
+        self.app = QApplication([])
+        self.window = QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.window)
 
-        uic.loadUi("pyChat.ui", self)
-        self.show()
+        # Default settings
+        self.app.setStyle(config.DEFAULT_STYLE)
+        self.ui.serverIP_lineEdit.setText(config.DEFAULT_IP)
+        self.ui.port_lineEdit.setText(config.DEFAULT_PORT)
 
-app = QApplication(sys.argv)
-UIWindow = UI()
-app.exec_()
+        # Connect button signals to their respective functions
+        self.ui.establishServer_pushButton.clicked.connect(self.establish_server)
+        self.ui.shutdownServer_pushButton.clicked.connect(self.shutdown_server)
+        self.ui.clearLog_pushButton.clicked.connect(self.clear_log)
+
+    def establish_server(self):
+        self.ui.serverActivityLog_textEdit.insertPlainText('Establishing server...\n')
+
+    def shutdown_server(self):
+        self.ui.serverActivityLog_textEdit.insertPlainText('Shutting down server...\n')
+
+    def clear_log(self):
+        self.ui.serverActivityLog_textEdit.clear()
+
+    def run(self):
+        self.window.show()  # Show the window
+        self.app.exec_()  # Start the application event loop
+
+
+if __name__ == '__main__':
+    backend = pyChatBackend()
+    backend.run()
