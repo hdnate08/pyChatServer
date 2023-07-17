@@ -5,7 +5,7 @@ July 17, 2023
 """
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from pyChatGUI import Ui_MainWindow
+from pyChatServerGUI import Ui_MainWindow
 from pyChatServer import PyChatServer
 import config
 import threading

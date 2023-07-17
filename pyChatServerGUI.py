@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\nateh\PycharmProjects\pyChatServer\pyChatGUI.ui'
+# Form implementation generated from reading ui file 'C:\Users\nateh\PycharmProjects\pyChatServer\pyChatServerGUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
