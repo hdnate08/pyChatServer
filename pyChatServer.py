@@ -19,7 +19,7 @@ class PyChatServer:
         self.client_threads = []
 
     def start(self):
-        self.to_Log(f'Server established, {self.host}:{str(self.port)}')
+        self.to_Log(f'Server established {self.host}:{str(self.port)}')
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server_socket.bind((self.host, self.port))
         self.server_socket.listen(5)
@@ -36,7 +36,7 @@ class PyChatServer:
         # attempt to run accept() on a closed socket and throw an error.
         while self.is_running and (ready_socket == self.server_socket):
             client_socket, client_address = self.server_socket.accept()
-            self.to_Log(f"Client connected, {client_address[0]}:{client_address[1]}")
+            self.to_Log(f"Client connected {client_address[0]}:{client_address[1]}")
 
             client_thread = threading.Thread(target=self.handle_client, args=(client_socket,))
             self.client_threads.append(client_thread)
@@ -52,7 +52,7 @@ class PyChatServer:
             self.to_Log(f"Thread {current_thread.ident} printing from handle_client()")
 
     def stop(self):
-        self.to_Log(f'Server closed, host: {self.host} port: {str(self.port)}')
+        self.to_Log(f'Server closed {self.host}:{str(self.port)}')
         if self.server_socket:
             self.is_running = False
             self.server_socket.close()
