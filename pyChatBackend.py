@@ -8,6 +8,7 @@ import config  # Defaults module
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from pyChatGUI import Ui_MainWindow
 from pyChatServer import PyChatServer  # server module
+import threading
 
 
 class pyChatBackend:
@@ -31,15 +32,14 @@ class pyChatBackend:
         self.server = None
 
     def establish_server(self):
-        self.append_to_Log("Server starting...")
         if self.server is None:
             host = self.ui.serverIP_lineEdit.text()
             port = int(self.ui.port_lineEdit.text())
             self.server = PyChatServer(host, port, self.append_to_Log)
-            self.server.start()
+            listener_thread = threading.Thread(target=self.server.start)
+            listener_thread.start()
 
     def shutdown_server(self):
-        self.append_to_Log("Server stopping...")
         if self.server is not None:
             self.server.stop()
             self.server = None
