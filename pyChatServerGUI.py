@@ -14,8 +14,24 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1050, 849)
-        MainWindow.setStyleSheet("")
+        MainWindow.resize(1051, 889)
+        MainWindow.setStyleSheet("QWidget {\n"
+"    background-color: #333333;\n"
+"    color: #ffffff;\n"
+"}\n"
+"\n"
+"QLabel {\n"
+"    color: #ffffff;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"    background-color: #555555;\n"
+"    color: #ffffff;\n"
+"    border: 1px solid #888888;\n"
+"}\n"
+"\n"
+"/* Add more styling rules as needed */\n"
+"")
         MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -30,7 +46,7 @@ class Ui_MainWindow(object):
         self.host_groupBox.setStyleSheet("")
         self.host_groupBox.setObjectName("host_groupBox")
         self.layoutWidget = QtWidgets.QWidget(self.host_groupBox)
-        self.layoutWidget.setGeometry(QtCore.QRect(10, 20, 231, 161))
+        self.layoutWidget.setGeometry(QtCore.QRect(10, 30, 231, 151))
         self.layoutWidget.setObjectName("layoutWidget")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.layoutWidget)
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -127,7 +143,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.serverActivityLog_textEdit, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1050, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1051, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)

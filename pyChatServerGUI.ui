@@ -6,15 +6,31 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1050</width>
-    <height>849</height>
+    <width>1051</width>
+    <height>889</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>pyChat Server</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QWidget {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+QLabel {
+    color: #ffffff;
+}
+
+QPushButton {
+    background-color: #555555;
+    color: #ffffff;
+    border: 1px solid #888888;
+}
+
+/* Add more styling rules as needed */
+</string>
   </property>
   <property name="tabShape">
    <enum>QTabWidget::Rounded</enum>
@@ -47,9 +63,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>30</y>
        <width>231</width>
-       <height>161</height>
+       <height>151</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
@@ -209,7 +225,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1050</width>
+     <width>1051</width>
      <height>21</height>
     </rect>
    </property>
