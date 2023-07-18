@@ -11,7 +11,7 @@ import config
 import threading
 
 
-class pyChatBackend:
+class pyChatServerBackend:
     def __init__(self):
         # Window setup
         self.app = QApplication([])
@@ -64,5 +64,5 @@ class pyChatBackend:
 
 
 if __name__ == '__main__':
-    backend = pyChatBackend()
+    backend = pyChatServerBackend()
     backend.run()
