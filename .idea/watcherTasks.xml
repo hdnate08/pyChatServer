@@ -21,5 +21,25 @@
       <option name="workingDir" value="$Projectpath$" />
       <envs />
     </TaskOptions>
+    <TaskOptions isEnabled="true">
+      <option name="arguments" value="$FilePath$ -o $FileDir$\$FileNameWithoutAllExtensions$_rc.py" />
+      <option name="checkSyntaxErrors" value="true" />
+      <option name="description" />
+      <option name="exitCodeBehavior" value="ERROR" />
+      <option name="fileExtension" value="xml" />
+      <option name="immediateSync" value="true" />
+      <option name="name" value=".qrc to .py" />
+      <option name="output" value="$Projectpath$" />
+      <option name="outputFilters">
+        <array />
+      </option>
+      <option name="outputFromStdout" value="false" />
+      <option name="program" value="$USER_HOME$/AppData/Local/Programs/Python/Python311/Scripts/pyrcc5" />
+      <option name="runOnExternalChanges" value="true" />
+      <option name="scopeName" value="Project Files" />
+      <option name="trackOnlyRoot" value="false" />
+      <option name="workingDir" value="$Projectpath$" />
+      <envs />
+    </TaskOptions>
   </component>
 </project>
