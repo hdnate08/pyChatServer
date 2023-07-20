@@ -23,7 +23,7 @@ class pyChatServerBackend:
         self.window.closeEvent = self.close_event
         self.app.setStyle(config.DEFAULT_STYLE)
         self.ui.serverIP_lineEdit.setText(config.DEFAULT_IP)
-        self.ui.port_lineEdit.setText(config.DEFAULT_PORT)
+        self.ui.port_lineEdit.setText(str(config.DEFAULT_PORT))
 
         # Connect button signals to their respective functions
         self.ui.establishServer_pushButton.clicked.connect(self.establish_server)
@@ -38,8 +38,7 @@ class pyChatServerBackend:
             host = self.ui.serverIP_lineEdit.text()
             port = int(self.ui.port_lineEdit.text())
             self.server = PyChatServer(host, port, self.append_to_Log)
-            # listener_thread continuosly monitors the given port for
-            # client connections
+
             listener_thread = threading.Thread(target=self.server.start)
             listener_thread.start()
 
