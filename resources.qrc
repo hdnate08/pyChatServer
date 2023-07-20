@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/icons">
+    <file>resources/icons/reload.png</file>
     <file>resources/icons/play.png</file>
     <file>resources/icons/square.png</file>
   </qresource>

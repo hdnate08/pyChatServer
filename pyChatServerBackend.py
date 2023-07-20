@@ -9,6 +9,7 @@ from pyChatServerGUI import Ui_MainWindow
 from pyChatServer import PyChatServer
 import config
 import threading
+import time
 
 
 class pyChatServerBackend:
@@ -21,9 +22,9 @@ class pyChatServerBackend:
 
         # Default settings
         self.window.closeEvent = self.close_event
-        self.app.setStyle(config.DEFAULT_STYLE)
         self.ui.serverIP_lineEdit.setText(config.DEFAULT_IP)
         self.ui.port_lineEdit.setText(str(config.DEFAULT_PORT))
+        self.ui.shutdownServer_pushButton.setEnabled(False)
 
         # Connect button signals to their respective functions
         self.ui.establishServer_pushButton.clicked.connect(self.establish_server)
@@ -34,6 +35,9 @@ class pyChatServerBackend:
         self.server = None
 
     def establish_server(self):
+        self.ui.establishServer_pushButton.setEnabled(False)
+        self.ui.shutdownServer_pushButton.setEnabled(True)
+
         if self.server is None:
             host = self.ui.serverIP_lineEdit.text()
             port = int(self.ui.port_lineEdit.text())
@@ -43,6 +47,9 @@ class pyChatServerBackend:
             listener_thread.start()
 
     def shutdown_server(self):
+        self.ui.establishServer_pushButton.setEnabled(True)
+        self.ui.shutdownServer_pushButton.setEnabled(False)
+
         if self.server is not None:
             self.server.stop()
             self.server = None
